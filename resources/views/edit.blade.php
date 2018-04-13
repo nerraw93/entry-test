@@ -16,6 +16,7 @@
     <div class="container">
       <h2>Update/edit product</h2><br/>
       <form method="post" action="{{action('ProductController@update', $id)}}">
+        @method('PUT')
         @csrf
         <div class="row">
           <div class="col-md-4"></div>

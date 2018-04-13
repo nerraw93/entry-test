@@ -93,7 +93,11 @@
                                 <td>{{ $data->price }}</td>
                                 <td>
                                     <a href="{{ action('ProductController@edit', $data->id) }}" class="btn btn-info btn-xs" title="View Product Details"><span class="glyphicon glyphicon-folder-open"></span></a>
-                                    <a href="{{ action('ProductController@destroy', $data->id) }}" class="btn btn-info btn-xs" title="Delete Product"><span class="glyphicon glyphicon-remove"></span></a>
+                                    <form method="post" action="{{ action('ProductController@destroy', $data->id) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-info btn-xs" title="Delete Product"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
