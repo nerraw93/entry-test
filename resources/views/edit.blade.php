@@ -13,11 +13,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>  
   </head>
   <body>
-    <div class="container">
-      <h2>Update/edit product</h2><br/>
+    <div class="container" style="margin-top:15%">
       <form method="post" action="{{action('ProductController@update', $id)}}">
         @method('PUT')
         @csrf
+        <h2 class="text-center">Update your product</h2><br/>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
@@ -29,13 +29,14 @@
           <div class="col-md-4"></div>
             <div class="form-group col-md-4">
               <label for="Email">Price:</label>
-              <input type="text" class="form-control" name="price" value="{{ $products->price }}">
+              <input type="text" class="form-control" name="price" value="{{ number_format($products->price, 2) }}">
             </div>
           </div>
         <div class="row">
           <div class="col-md-4"></div>
-          <div class="form-group col-md-4" style="margin-top:60px">
+          <div class="form-group col-md-4" style="margin-top:20px">
             <button type="submit" class="btn btn-success">Submit</button>
+            <a href="{{ url('/') }}" class="btn btn-primary">Back</a>
           </div>
         </div>
       </form>
