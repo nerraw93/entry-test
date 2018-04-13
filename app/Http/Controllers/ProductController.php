@@ -23,7 +23,7 @@ class ProductController extends Controller
     	$product->price = $request->get('price');
     	$product->save();
 
-    	return redirect('/')->with('success', 'Information has been added');
+    	return redirect('/')->with('success', 'Information has been added!');
     }
 
     public function edit($id) {
@@ -38,13 +38,13 @@ class ProductController extends Controller
     	$product->price = $request->get('price');
     	$product->save();
 
-    	return redirect('/');
+    	return redirect('/')->with('success', 'Information has been updated!');
     }
 
     public function destroy($id) {
     	$product = Products::find($id);
     	$product->delete();
 
-    	return redirect('/')->with('success', 'Information has been deleted');
+    	return redirect('/')->with('success', 'Information has been deleted!');
     }
 }

@@ -69,20 +69,17 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <div class="title m-b-md">
-
-                </div>
-
                 @if (\Session::has('success'))
-                  <div class="alert alert-success">
+                  <div class="alert alert-success" style="margin-bottom:0">
                     <p>{{ \Session::get('success') }}</p>
                   </div><br />
                  @endif
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
+                            <th><a href="{{ url('products/create') }}" class="btn btn-info btn-xs" title="Add Products Page"><span class="glyphicon glyphicon-plus"></span></a> Product</th>
                             <th>Price</th>
+                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,10 +87,10 @@
                             <tr>
                                 <input type="hidden" value="{{ $data->id }}">
                                 <td>{{ $data->name }}</td>
-                                <td>{{ $data->price }}</td>
+                                <td>{{ number_format($data->price, 2) }}</td>
                                 <td>
-                                    <a href="{{ action('ProductController@edit', $data->id) }}" class="btn btn-info btn-xs" title="View Product Details"><span class="glyphicon glyphicon-folder-open"></span></a>
                                     <form method="post" action="{{ action('ProductController@destroy', $data->id) }}">
+                                        <a href="{{ action('ProductController@edit', $data->id) }}" class="btn btn-info btn-xs" title="View Product Details"><span class="glyphicon glyphicon-folder-open"></span></a>
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-info btn-xs" title="Delete Product"><span class="glyphicon glyphicon-remove"></span></button>
